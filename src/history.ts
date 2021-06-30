@@ -32,7 +32,28 @@ export const valueAt = <T>(history: History<T>, date: string): T => {
   return defaultValue
 }
 
+const mergetHistories = (
+  firstHistory: History<number>,
+  secondHistory: History<number>
+): History<Number> | undefined => {
+  //
+
+  const result = {
+    defaultValue: firstHistory.defaultValue + secondHistory.defaultValue,
+  }
+
+  return undefined
+}
+
 export const add = (histories: History<number>[]): History<number> => {
-  // @ts-ignore
-  return // TODO
+  return histories.reduce(
+    (previousValue, currentValue) => ({
+      defaultValue: previousValue.defaultValue + currentValue.defaultValue,
+      steps: [...previousValue.steps, ...currentValue.steps],
+    }),
+    {
+      defaultValue: 0,
+      steps: [],
+    }
+  )
 }
