@@ -128,9 +128,5 @@ export const add = (histories: History<number>[]): History<number> => {
     }
   )
 
-  result.steps.sort((stepOne, stepTwo) =>
-    stepOne.date > stepTwo.date ? 1 : -1
-  )
-
   return result
 }
